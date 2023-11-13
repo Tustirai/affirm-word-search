@@ -53,7 +53,6 @@ function arrangeGame() {
 		// Add selected class to cell
 		this.classList.add("selected");
 		// Highlight cells that belong to selected word
-		highlight();
 	}
 
 	puzzleCells.forEach((cell) => {
@@ -71,7 +70,6 @@ function arrangeGame() {
 			// Add selected class to cell
 			cell.classList.add("selected");
 			// Highlight cells that belong to selected word
-			highlight();
 		});
 		cell.addEventListener("mouseup", () => {
 			// Remove mousemove event listener
