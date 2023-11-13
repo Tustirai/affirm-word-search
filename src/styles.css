@@ -1,0 +1,135 @@
+:root {
+    --m: #ec7ead;
+    --s: #c82f63;
+    --d: #78383d;
+    --f: 'Concert One', sans-serif
+}
+
+.container {
+    font: var(--f) 16px
+}
+
+.button-74 {
+    background: #ec7ead;
+    border: 2px solid #c82f63;
+    border-radius: 30px;
+    box-shadow: #c82f63 4px 4px 0 0;
+    color: #c82f63;
+    cursor: pointer;
+    display: block;
+    font-weight: 600;
+    font-size: 1.125rem;
+    padding: 0 1.125rem;
+    line-height: 3.125rem;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    margin: 0 auto
+}
+
+.button-74:hover {
+    background: #fff
+}
+
+.button-74:active {
+    box-shadow: #c82f63 2px 2px 0 0;
+    transform: translate(2px, 2px)
+}
+
+.hint {
+    list-style: none;
+    border: 1px solid #c82f63
+}
+
+.table {
+    border: 1px solid #c82f63
+}
+
+.singleWord {
+    border: 1px solid #c82f63;
+    font: 16px/1.5 'Concert One', sans-serif;
+    text-align: center;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px
+}
+
+.found {
+    background: pink;
+    color: #fff
+}
+
+.selected {
+    background: #78383d;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    outline: none
+}
+
+.crossed-off {
+    text-decoration: line-through
+}
+
+.singleWord:focus {
+    outline: none
+}
+
+.noSelect {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.noSelect:focus {
+    outline: none !important
+}
+
+@media only screen and (max-width:600px) {
+    .button-74 {
+        font-size: 1rem;
+        padding: 0.75rem;
+        line-height: 2.5rem
+    }
+
+    .table,
+    .hint {
+        font-size: 8px;
+
+    }
+
+    .table {
+        padding: 1px;
+    }
+
+    .singleWord {
+        width: 5px;
+        height: 8px;
+        padding: 6px;
+        font-size: 12px;
+        margin: 1px
+    }
+
+    li {
+        padding: 3px;
+    }
+
+
+    .p {
+        font-size: 9px
+    }
+
+
+}
+
+@media (min-width:768px) {
+    .button-74 {
+        min-width: 7.5rem;
+        padding: 0 1.5625rem
+    }
+}
