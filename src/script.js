@@ -104,6 +104,10 @@ function placeLetters(myArr) {
 				placed = true;
 			}
 		}
+		if (!placed) {
+			// Handle the case when a word cannot be placed after 100 attempts
+			console.log("Unable to place the word:", myArr[i]);
+		}
 	}
 }
 
@@ -134,36 +138,6 @@ function canPlaceWord(word, startRow, startCol, orientation) {
 					`.singleWord[data-row='${
 						startRow + i
 					}'][data-col='${startCol}']`
-				);
-				if (box.textContent !== "" && box.textContent !== word[i]) {
-					return false;
-				}
-			}
-			return true;
-		case "diagonal":
-			if (startRow + wordLength > rows || startCol + wordLength > cols) {
-				return false;
-			}
-			for (let i = 0; i < wordLength; i++) {
-				let box = document.querySelector(
-					`.singleWord[data-row='${startRow + i}'][data-col='${
-						startCol + i
-					}']`
-				);
-				if (box.textContent !== "" && box.textContent !== word[i]) {
-					return false;
-				}
-			}
-			return true;
-		case "diagonal-reverse":
-			if (startRow + 1 - wordLength < 0 || startCol + wordLength > cols) {
-				return false;
-			}
-			for (let i = 0; i < wordLength; i++) {
-				let box = document.querySelector(
-					`.singleWord[data-row='${startRow - i}'][data-col='${
-						startCol + i
-					}']`
 				);
 				if (box.textContent !== "" && box.textContent !== word[i]) {
 					return false;
@@ -254,6 +228,25 @@ function found(selectedWord) {
 			cell.classList.remove("selected");
 		});
 	}
+
+	done();
+}
+
+function done() {
+	let hintItems = document.querySelectorAll("#hint li");
+	let allCrossedOff = true;
+
+	hintItems.forEach((item) => {
+		if (!item.classList.contains("crossed-off")) {
+			allCrossedOff = false;
+		}
+	});
+
+	if (allCrossedOff) {
+		// Update the h2 element with the message
+		let h2 = document.querySelector("h2");
+		h2.innerHTML = "Well done, you found them all!";
+	}
 }
 
 function resetGame() {
@@ -263,6 +256,5 @@ function resetGame() {
 	hint.innerHTML = "";
 	arrangeGame();
 }
-
 const resetButton = document.querySelector("#reset");
 resetButton.addEventListener("click", resetGame);
