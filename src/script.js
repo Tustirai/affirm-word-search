@@ -198,17 +198,6 @@ function placeWord(word, startRow, startCol, orientation) {
 				box.style.whiteSpace = "nowrap";
 			}
 			break;
-		case "diagonal":
-			for (let i = 0; i < wordLength; i++) {
-				let box = document.querySelector(
-					`.singleWord[data-row='${startRow + i}'][data-col='${
-						startCol + i
-					}']`
-				);
-				box.textContent = word[i];
-				box.style.whiteSpace = "nowrap";
-			}
-			break;
 	}
 }
 
@@ -249,6 +238,22 @@ function found(selectedWord) {
 			});
 		}
 	});
+
+	let wordFound = false;
+	hintItems.forEach((item) => {
+		if (
+			item.textContent === selectedWord &&
+			item.classList.contains("crossed-off")
+		) {
+			wordFound = true;
+		}
+	});
+
+	if (!wordFound) {
+		chosenWord.forEach((cell) => {
+			cell.classList.remove("selected");
+		});
+	}
 }
 
 function resetGame() {

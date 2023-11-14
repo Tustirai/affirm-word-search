@@ -53,7 +53,7 @@ li {
 
 .singleWord {
     border: 1px solid var(--s);
-    font: 16px/1.5 var(--f);
+    font: 24px/1.5 var(--f);
     text-align: center;
     margin: 2px;
     display: flex;
