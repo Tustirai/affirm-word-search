@@ -232,12 +232,22 @@ function crossOff(selectedWord) {
 	});
 }
 
-function found() {
+function found(selectedWord) {
 	let chosenWord = document.querySelectorAll(".singleWord.selected");
-	chosenWord.forEach((cell) => {
-		cell.style.backgroundColor = "pink";
-		cell.style.borderRadius = "50%";
-		cell.style.border = "2px solid white";
+	let hintItems = document.querySelectorAll("#hint li");
+
+	hintItems.forEach((item) => {
+		if (
+			item.textContent === selectedWord &&
+			item.classList.contains("crossed-off")
+		) {
+			chosenWord.forEach((cell) => {
+				cell.style.backgroundColor = "pink";
+				cell.style.color = "white";
+				cell.style.borderRadius = "50%";
+				cell.style.border = "2px solid pink";
+			});
+		}
 	});
 }
 
