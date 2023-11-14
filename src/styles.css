@@ -6,7 +6,8 @@
 }
 
 .container {
-    font: var(--f) 16px
+    font: var(--f);
+    margin-top: 100px;
 }
 
 .button-74 {
@@ -38,16 +39,21 @@
 
 .hint {
     list-style: none;
-    border: 1px solid #c82f63
+    border: 1px solid var(--s);
+    margin: 5px;
+}
+
+li {
+    padding: 5.5px;
 }
 
 .table {
-    border: 1px solid #c82f63
+    border: 1px solid var(--s);
 }
 
 .singleWord {
-    border: 1px solid #c82f63;
-    font: 16px/1.5 'Concert One', sans-serif;
+    border: 1px solid var(--s);
+    font: 16px/1.5 var(--f);
     text-align: center;
     margin: 2px;
     display: flex;
@@ -57,12 +63,12 @@
 }
 
 .found {
-    background: pink;
+    background: var(--m);
     color: #fff
 }
 
 .selected {
-    background: #78383d;
+    background: var(--m);
     border-radius: 50%;
     border: 2px solid #fff;
     outline: none
@@ -120,9 +126,7 @@
     }
 
 
-    .p {
-        font-size: 9px
-    }
+
 
 
 }

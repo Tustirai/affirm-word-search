@@ -78,8 +78,11 @@ function arrangeGame() {
 			});
 			// Log selected word to console
 			console.log(selectedWord);
-			// Clear selected cells and word
 
+			// Call crossOff function
+			crossOff(selectedWord);
+
+			// Clear selected cells and word
 			selectedCells = [];
 			selectedWord = "";
 		});
@@ -218,3 +221,25 @@ function fillEmptySpaces() {
 		space.textContent = randomLetter;
 	});
 }
+
+function crossOff(selectedWord) {
+	if (words.includes(selectedWord)) {
+		// check if selected word is in the words array
+		const hintItems = document.querySelectorAll("#hint li");
+		hintItems.forEach((item) => {
+			if (item.textContent === selectedWord) {
+				// check if hint item matches selected word
+				item.classList.add("crossed-off"); // add "found" class to hint item
+			}
+		});
+	}
+}
+
+function loadNew() {
+	const hint = document.querySelector("#hint");
+	hint.innerHTML = ""; // clear the hint list
+	puzzle.innerHTML = ""; // clear the puzzle element
+	arrangeGame(); // arrange a new game
+}
+
+let reset = document.querySelector("#reset").addEventListener("click", loadNew);
