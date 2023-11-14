@@ -55,11 +55,12 @@ li {
     border: 1px solid var(--s);
     font: 24px/1.5 var(--f);
     text-align: center;
-    margin: 2px;
+    margin: 3px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 2px
+    border-radius: 10px;
+
 }
 
 .found {
@@ -134,6 +135,117 @@ li {
 @media (min-width:768px) {
     .button-74 {
         min-width: 7.5rem;
-        padding: 0 1.5625rem
+        padding: 0 1.5625rem;
+    }
+}
+
+
+
+
+*,
+:before,
+:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gameOver {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--m);
+    width: 9.25em;
+    height: 1.15em;
+    font-size: 4rem;
+    font-family: sans-serif;
+    position: relative;
+    margin: 0 auto;
+}
+
+.gameOver div {
+    position: absolute;
+    left: 0;
+    text-transform: uppercase;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.upper {
+    top: 0;
+    height: 52.5%;
+    color: #fff;
+    overflow: hidden;
+    z-index: 3;
+    animation: moveUp 1.5s ease-in-out 1;
+    background-color: var(--m);
+}
+
+.lower {
+    bottom: 0;
+    height: 100%;
+    background: linear-gradient(180deg, white 52.5%, #fff 52.5%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    z-index: 1;
+    animation: moveDown 1.5s ease-in-out 1;
+}
+
+.inside {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-40%);
+    text-align: center;
+    z-index: 2;
+    font-size: 1rem;
+    color: var(--d);
+}
+
+@keyframes moveUp {
+
+    0%,
+    100% {
+        top: 0;
+    }
+
+    50%,
+    70% {
+        top: -45px;
+    }
+}
+
+@keyframes moveDown {
+
+    0%,
+    100% {
+        top: 0;
+    }
+
+    50%,
+    70% {
+        top: 30px;
+    }
+}
+
+@media (max-width: 424px) {
+    .container {
+        font-size: 2.5rem;
+    }
+
+    .inside {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        font-size: 2rem;
+    }
+
+    .inside {
+        font-size: 0.5rem;
     }
 }

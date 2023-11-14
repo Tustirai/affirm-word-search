@@ -12,6 +12,7 @@ let words = [
 	"CONFIDENCE",
 	"GRATITUDE",
 ];
+
 const puzzle = document.querySelector("#puzzleArea");
 let rows = 14;
 let cols = 14;
@@ -104,10 +105,6 @@ function placeLetters(myArr) {
 				placed = true;
 			}
 		}
-		if (!placed) {
-			// Handle the case when a word cannot be placed after 100 attempts
-			console.log("Unable to place the word:", myArr[i]);
-		}
 	}
 }
 
@@ -144,6 +141,36 @@ function canPlaceWord(word, startRow, startCol, orientation) {
 				}
 			}
 			return true;
+		case "diagonal":
+			if (startRow + wordLength > rows || startCol + wordLength > cols) {
+				return false;
+			}
+			for (let i = 0; i < wordLength; i++) {
+				let box = document.querySelector(
+					`.singleWord[data-row='${startRow + i}'][data-col='${
+						startCol + i
+					}']`
+				);
+				if (box.textContent !== "" && box.textContent !== word[i]) {
+					return false;
+				}
+			}
+			return true;
+		case "diagonal-reverse":
+			if (startRow + 1 - wordLength < 0 || startCol + wordLength > cols) {
+				return false;
+			}
+			for (let i = 0; i < wordLength; i++) {
+				let box = document.querySelector(
+					`.singleWord[data-row='${startRow - i}'][data-col='${
+						startCol + i
+					}']`
+				);
+				if (box.textContent !== "" && box.textContent !== word[i]) {
+					return false;
+				}
+			}
+			return true;
 	}
 }
 
@@ -167,6 +194,17 @@ function placeWord(word, startRow, startCol, orientation) {
 					`.singleWord[data-row='${
 						startRow + i
 					}'][data-col='${startCol}']`
+				);
+				box.textContent = word[i];
+				box.style.whiteSpace = "nowrap";
+			}
+			break;
+		case "diagonal":
+			for (let i = 0; i < wordLength; i++) {
+				let box = document.querySelector(
+					`.singleWord[data-row='${startRow + i}'][data-col='${
+						startCol + i
+					}']`
 				);
 				box.textContent = word[i];
 				box.style.whiteSpace = "nowrap";
@@ -244,8 +282,8 @@ function done() {
 
 	if (allCrossedOff) {
 		// Update the h2 element with the message
-		let h2 = document.querySelector("h2");
-		h2.innerHTML = "Well done, you found them all!";
+		let gameOver = document.querySelector(".gameOver");
+		gameOver.style.display = "block";
 	}
 }
 
