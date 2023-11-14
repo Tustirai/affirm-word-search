@@ -63,7 +63,7 @@ li {
 }
 
 .found {
-    background: var(--m);
+    background: red;
     color: #fff
 }
 

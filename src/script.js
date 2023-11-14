@@ -81,6 +81,7 @@ function arrangeGame() {
 
 			// Call crossOff function
 			crossOff(selectedWord);
+			found(selectedWord);
 
 			// Clear selected cells and word
 			selectedCells = [];
@@ -223,23 +224,30 @@ function fillEmptySpaces() {
 }
 
 function crossOff(selectedWord) {
-	if (words.includes(selectedWord)) {
-		// check if selected word is in the words array
-		const hintItems = document.querySelectorAll("#hint li");
-		hintItems.forEach((item) => {
-			if (item.textContent === selectedWord) {
-				// check if hint item matches selected word
-				item.classList.add("crossed-off"); // add "found" class to hint item
-			}
-		});
-	}
+	const hintItems = document.querySelectorAll("#hint li");
+	hintItems.forEach((item) => {
+		if (item.textContent === selectedWord) {
+			item.classList.add("crossed-off"); // add "crossed-off" class to hint item
+		}
+	});
 }
 
-function loadNew() {
+function found() {
+	let chosenWord = document.querySelectorAll(".singleWord.selected");
+	chosenWord.forEach((cell) => {
+		cell.style.backgroundColor = "pink";
+		cell.style.borderRadius = "50%";
+		cell.style.border = "2px solid white";
+	});
+}
+
+function resetGame() {
+	const puzzle = document.querySelector("#puzzleArea");
 	const hint = document.querySelector("#hint");
-	hint.innerHTML = ""; // clear the hint list
-	puzzle.innerHTML = ""; // clear the puzzle element
-	arrangeGame(); // arrange a new game
+	puzzle.innerHTML = "";
+	hint.innerHTML = "";
+	arrangeGame();
 }
 
-let reset = document.querySelector("#reset").addEventListener("click", loadNew);
+const resetButton = document.querySelector("#reset");
+resetButton.addEventListener("click", resetGame);
