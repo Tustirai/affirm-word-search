@@ -291,16 +291,6 @@ function done() {
 	}
 }
 
-function resetGame() {
-	const puzzle = document.querySelector("#puzzleArea");
-	const hint = document.querySelector("#hint");
-	puzzle.innerHTML = "";
-	hint.innerHTML = "";
-	arrangeGame();
-}
-const resetButton = document.querySelector("#reset");
-resetButton.addEventListener("click", resetGame);
-
 function getAffirmation(selectedWord) {
 	const affirmations = {
 		IMPROVEMENT: [
@@ -461,3 +451,15 @@ function getAffirmation(selectedWord) {
 		affirmationsList.appendChild(newAffirmations); // Append the new div to the affirmationsList
 	}
 }
+
+function resetGame() {
+	const puzzle = document.querySelector("#puzzleArea");
+	const hint = document.querySelector("#hint");
+	let affirmationsList = document.querySelector("#newAffirmation");
+	puzzle.innerHTML = "";
+	hint.innerHTML = "";
+	affirmationsList.innerHTML = "";
+	arrangeGame();
+}
+const resetButton = document.querySelector("#reset");
+resetButton.addEventListener("click", resetGame);
