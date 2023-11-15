@@ -440,16 +440,24 @@ function getAffirmation(selectedWord) {
 		],
 	};
 
-	let category = selectedWord;
-	let affirmationsList = document.querySelector("#newAffirmation");
+	let category = selectedWord; // Make sure selectedWord is properly defined
+	let affirmationsList = document.querySelector("#newAffirmation"); // Make sure the element with ID "newAffirmation" exists
 	let categoryHeading = document.createElement("h4");
 	categoryHeading.textContent = category;
+	categoryHeading.className = "affirmation-heading"; // Add class to H4 element
 	affirmationsList.appendChild(categoryHeading);
+
 	if (affirmations[category]) {
-		affirmationsList.innerHTML +=
-			"<br>" + affirmations[category].join("<br>");
-	} else {
-		affirmationsList.innerHTML = " ";
+		let newAffirmations = document.createElement("div"); // Create a new div to hold the affirmations
+		newAffirmations.className = "listOfAffirmations"; // Add the class "listOfAffirmations" to the new div
+		affirmations[category].forEach((affirmation) => {
+			let olElement = document.createElement("ol"); // Create an ordered list
+			olElement.className = "affirmation-list"; // Add class to the ordered list
+			let liElement = document.createElement("li"); // Create a list item
+			liElement.textContent = affirmation;
+			olElement.appendChild(liElement); // Append list item to the ordered list
+			newAffirmations.appendChild(olElement); // Append the ordered list to the new div
+		});
+		affirmationsList.appendChild(newAffirmations); // Append the new div to the affirmationsList
 	}
-	console.log(affirmations[category]);
 }

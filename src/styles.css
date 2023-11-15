@@ -1,8 +1,18 @@
 :root {
     --m: #ec7ead;
+    /* Light pink */
     --s: #c82f63;
+    /* Medium pink */
     --d: #78383d;
-    --f: 'Concert One', sans-serif
+    /* Dark pink */
+    --f: 'Concert One', sans-serif;
+    --color-text: #fff;
+    --color-background: linear-gradient(to right bottom, #ff8eee, #ec7ead);
+    /* Gradient with pinkish tones */
+    --color-container: linear-gradient(to right bottom, #c82f63, rgba(255, 255, 255, 0.5));
+    /* Gradient with pinkish tones */
+    --color-list: rgba(234, 83, 211, 0.7);
+    /* Pink with alpha for transparency */
 }
 
 .container {
@@ -11,30 +21,30 @@
 }
 
 .button-74 {
-    background: #ec7ead;
-    border: 2px solid #c82f63;
+    background: var(--m);
+    border: 2px solid var(--s);
     border-radius: 30px;
-    box-shadow: #c82f63 4px 4px 0 0;
-    color: #c82f63;
+    box-shadow: var(--s) 4px 4px 0 0;
+    color: var(--s);
     cursor: pointer;
     display: block;
     font-weight: 600;
-    font-size: 1.125rem;
+    font-size: 35px;
     padding: 0 1.125rem;
     line-height: 3.125rem;
     text-align: center;
     text-decoration: none;
     user-select: none;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 .button-74:hover {
-    background: #fff
+    background: #fff;
 }
 
 .button-74:active {
-    box-shadow: #c82f63 2px 2px 0 0;
-    transform: translate(2px, 2px)
+    box-shadow: var(--s) 2px 2px 0 0;
+    transform: translate(2px, 2px);
 }
 
 .hint {
@@ -44,7 +54,7 @@
 }
 
 li {
-    padding: 11px;
+    padding: 6px;
     font-size: 20px;
 }
 
@@ -61,27 +71,21 @@ li {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-
-}
-
-.found {
-    background: red;
-    color: #fff
 }
 
 .selected {
     background: var(--m);
     border-radius: 50%;
     border: 2px solid #fff;
-    outline: none
+    outline: none;
 }
 
 .crossed-off {
-    text-decoration: line-through
+    text-decoration: line-through;
 }
 
 .singleWord:focus {
-    outline: none
+    outline: none;
 }
 
 .noSelect {
@@ -91,24 +95,23 @@ li {
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none
+    user-select: none;
 }
 
 .noSelect:focus {
-    outline: none !important
+    outline: none !important;
 }
 
-@media only screen and (max-width:600px) {
+@media only screen and (max-width: 600px) {
     .button-74 {
         font-size: 1rem;
         padding: 0.75rem;
-        line-height: 2.5rem
+        line-height: 2.5rem;
     }
 
     .table,
     .hint {
         font-size: 8px;
-
     }
 
     .table {
@@ -120,28 +123,20 @@ li {
         height: 8px;
         padding: 6px;
         font-size: 12px;
-        margin: 1px
+        margin: 1px;
     }
 
     li {
         padding: 3px;
     }
-
-
-
-
-
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
     .button-74 {
         min-width: 7.5rem;
         padding: 0 1.5625rem;
     }
 }
-
-
-
 
 *,
 :before,
@@ -249,4 +244,82 @@ li {
     .inside {
         font-size: 0.5rem;
     }
+}
+
+.listOfAffirmations {
+    margin: 0 auto;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background: var(--color-background);
+    width: 40vw;
+    padding: 3rem;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: relative;
+    border-radius: 3rem;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+
+    &::before {
+        content: "";
+        top: -10rem;
+        left: -10rem;
+        width: 40rem;
+        height: 40rem;
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.35);
+    }
+
+    &::after {
+        content: "";
+        bottom: 0rem;
+        right: -10rem;
+        width: 40rem;
+        height: 40rem;
+        margin-bottom: -25rem;
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(249, 159, 240, 0.6);
+    }
+
+
+    .affirmation-list {
+        margin: 0 auto;
+        gap: 1rem;
+        padding: 0;
+        list-style: none;
+        place-items: center;
+        flex-direction: column;
+        counter-reset: my-counter;
+
+        li {
+            width: 40rem;
+            text-align: center;
+            color: var(--color-text);
+            border-radius: 3rem;
+            background: var(--color-list);
+            counter-increment: my-counter;
+            padding: 1.1rem 1.5rem 1.1rem 1.5rem;
+
+            &::before {
+                content: counter(my-counter) ". ";
+            }
+        }
+    }
+}
+
+.affirmation-heading {
+    top: 0;
+    margin: 0 auto;
+    padding: 0;
+    position: sticky;
+    text-align: center;
+    color: var(--color-text);
+    background: rgba(235, 107, 199, 0.7);
+    border-radius: 30px;
+    width: 40vw;
 }
