@@ -449,7 +449,6 @@ function getAffirmation(selectedWord) {
 		affirmationsList.innerHTML +=
 			"<br>" + affirmations[category].join("<br>");
 	} else {
-		affirmationsList.innerHTML = " ";
+		categoryHeading.textContent = "";
 	}
-	console.log(affirmations[category]);
 }
