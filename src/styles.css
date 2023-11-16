@@ -22,7 +22,9 @@
     border-image-source: url("/src/image/pink.jpg");
     border-image-slice: 30;
     border-image-repeat: round;
-    padding: 150px;
+    padding: 15px;
+
+
 }
 
 .background {
@@ -405,7 +407,7 @@ h4 {
     text-align: center;
     line-height: 1;
     background-image: url("/src/image/TextureBackgrounds.jpg");
-    background-size: 110% auto;
+    background-size: 100% auto;
     background-position: center;
     color: transparent;
     -webkit-background-clip: text;
