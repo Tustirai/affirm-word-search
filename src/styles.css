@@ -18,12 +18,22 @@
 .container {
     font: var(--f);
     margin-top: 100px;
+    border: 20px solid;
+    border-image-source: url("/src/image/pink.jpg");
+    border-image-slice: 30;
+    border-image-repeat: round;
+    padding: 150px;
 }
 
 .background {
     background-image: url('/src/image/gold\ and\ pink.png');
     background-size: cover;
 }
+
+
+
+
+
 
 .button-74 {
     background: var(--m);
@@ -375,4 +385,29 @@ h4 {
     h4 {
         font-size: 10px;
     }
+}
+
+
+.headrer {
+    background: #000405;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: var(--f);
+    font-weight: 900;
+}
+
+.fancy {
+    font-size: 8vw;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    background-image: url("/src/image/TextureBackgrounds.jpg");
+    background-size: 110% auto;
+    background-position: center;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
