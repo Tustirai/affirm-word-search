@@ -2,6 +2,7 @@
     --m: #ec7ead;
     /* Light pink */
     --s: #c82f63;
+
     /* Dark pink */
     --d: #78383d;
     /* Dark pink shade */
@@ -11,14 +12,28 @@
     --color-container: linear-gradient(to right bottom, rgba(255, 184, 142, 0.44), rgba(255, 255, 255, 0.5));
     /* Gradient with pink and gold */
     --color-list: rgba(234, 87, 83, 0.7);
-    /* Pink shade with transparency */
+    /* Pink sh
+    /* Medium pink */
+    --d: #78383d;
+    /* Dark pink */
+    --f: 'Concert One', sans-serif;
+    --color-text: #fff;
+    --color-background: linear-gradient(to right bottom, #ff8eee, #ec7ead);
+    /* Gradient with pinkish tones */
+    --color-container: linear-gradient(to right bottom, #c82f63, rgba(255, 255, 255, 0.5));
+    /* Gradient with pinkish tones */
+    --color-list: rgba(234, 83, 211, 0.7);
+    /* Pink with alpha for transparency */
+
 }
 
 
 .container {
     font: var(--f);
     margin-top: 100px;
+
 }
+
 
 .button-74 {
     background: var(--m);
@@ -29,7 +44,7 @@
     cursor: pointer;
     display: block;
     font-weight: 600;
-    font-size: 1.125rem;
+    font-size: 35px;
     padding: 0 1.125rem;
     line-height: 3.125rem;
     text-align: center;
@@ -70,11 +85,13 @@ li {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+
 }
 
 .found {
     background: red;
     color: #fff;
+
 }
 
 .selected {
@@ -94,6 +111,19 @@ li {
 
 .noSelect {
     user-select: none;
+
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.noSelect:focus {
+    outline: none !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -106,6 +136,10 @@ li {
     .table,
     .hint {
         font-size: 8px;
+
+    }
+
+    .table {
         padding: 1px;
     }
 
