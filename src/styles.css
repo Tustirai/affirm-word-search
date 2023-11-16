@@ -66,8 +66,8 @@
 
 .hint {
     list-style: none;
-    border: 1px solid var(--s);
-    border-radius: 8px;
+    border: 1px none var(--s);
+    border-radius: 5px;
 }
 
 li {
