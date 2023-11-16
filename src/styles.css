@@ -136,8 +136,8 @@ li {
     }
 
     li {
-        padding: 1.5px;
-        font-size: 9px;
+        padding: 1px;
+        font-size: 8px;
 
     }
 
@@ -328,7 +328,7 @@ li {
 }
 
 .listOfAffirmations li {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     padding: 5px;
 }
 
@@ -338,7 +338,7 @@ h4 {
     position: sticky;
     text-align: center;
     color: var(--s);
-    margin-bottom: 3rem;
+    margin-bottom: 3px;
 }
 
 @media (max-width: 768px) {
