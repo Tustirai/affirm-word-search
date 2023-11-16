@@ -50,6 +50,7 @@
 .hint {
     list-style: none;
     border: 1px solid var(--s);
+    border-radius: 8px;
 }
 
 li {
@@ -118,14 +119,30 @@ li {
     }
 
     li {
-        padding: 3px;
+        padding: 1.5px;
+        font-size: 9px;
+
     }
+
+    p {
+        font-size: 9px;
+    }
+
 }
+
 
 @media (min-width: 768px) {
     .button-74 {
         min-width: 7.5rem;
         padding: 0 1.5625rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .button-74 {
+        font-size: 9px;
+        padding: 2px;
+        margin: 2px;
     }
 }
 
@@ -138,7 +155,7 @@ li {
 }
 
 .gameOver {
-    height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -217,7 +234,7 @@ li {
 }
 
 @media (max-width: 424px) {
-    .container {
+    .gameOver {
         font-size: 2.5rem;
     }
 
@@ -227,7 +244,7 @@ li {
 }
 
 @media (max-width: 320px) {
-    .container {
+    .gameOver {
         font-size: 2rem;
     }
 
@@ -237,7 +254,7 @@ li {
 }
 
 .miniContainer {
-    width: 40vw;
+    width: 100%;
     padding: 3rem;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -255,7 +272,7 @@ li {
         content: "";
         top: -10rem;
         left: -10rem;
-        width: 40rem;
+        width: 100%;
         height: 40rem;
         position: absolute;
         border-radius: 50%;
@@ -266,7 +283,7 @@ li {
         content: "";
         bottom: 0rem;
         right: -10rem;
-        width: 40rem;
+        width: 100%;
         height: 40rem;
         margin-bottom: -25rem;
         position: absolute;
@@ -279,13 +296,14 @@ li {
     list-style: none;
     display: block;
     margin-right: 0 auto;
-    text-align: center;
     border: var(--m) solid;
-    width: 40rem;
+    width: 100%;
     text-align: center;
     border-radius: 3rem;
     counter-reset: my-counter;
     padding-bottom: 10px;
+    font-size: 24px;
+    padding: 3px;
 }
 
 .listOfAffirmations::before {
@@ -304,4 +322,52 @@ h4 {
     text-align: center;
     color: var(--s);
     margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+
+    .miniContainer,
+    .listOfAffirmations {
+        max-width: 100%;
+        /* Adjusted to 100% to fit the screen */
+        width: 100%;
+        /* Added to ensure full width */
+        font-size: 12px;
+        padding: 2px;
+        display: flex;
+        flex-direction: column;
+        /* Added to display items below each other */
+        margin: 5px;
+
+        &::before {
+            content: "";
+            top: -10rem;
+            left: -10rem;
+            width: 100%;
+            /* Adjusted to 100% to fit the screen */
+            height: 100%;
+            /* Adjusted to 100% to fit the screen */
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        &::after {
+            content: "";
+            bottom: 0rem;
+            right: -10rem;
+            width: 100%;
+            /* Adjusted to 100% to fit the screen */
+            height: 100%;
+            /* Adjusted to 100% to fit the screen */
+            margin-bottom: -25rem;
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(251, 158, 221, 0.541);
+        }
+    }
+
+    h4 {
+        font-size: 10px;
+    }
 }
