@@ -20,6 +20,11 @@
     margin-top: 100px;
 }
 
+.background {
+    background-image: url('/src/image/gold\ and\ pink.png');
+    background-size: cover;
+}
+
 .button-74 {
     background: var(--m);
     border: 2px solid var(--s);
@@ -363,7 +368,7 @@ h4 {
             margin-bottom: -25rem;
             position: absolute;
             border-radius: 50%;
-            background: rgba(251, 158, 221, 0.541);
+            background: rgba(254, 200, 167, 0.6);
         }
     }
 
