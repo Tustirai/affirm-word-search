@@ -413,3 +413,38 @@ h4 {
     -webkit-background-clip: text;
     background-clip: text;
 }
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 24px;
+    justify-items: center;
+    align-items: center;
+    background-color: var(--m);
+    color: #fff;
+    padding: 24px;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 2px;
+    transition: border-bottom 0.2s ease-in-out;
+}
+
+.footer a:hover {
+    border-bottom: 1px solid transparent;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        text-align: center;
+    }
+}
+
+.footer li {
+    list-style: none;
+}
