@@ -244,6 +244,8 @@ li {
     position: relative;
     border-radius: 3rem;
     background: var(--color-container);
+    display: block;
+    margin: 0 auto;
 
     &::-webkit-scrollbar {
         width: 0;
