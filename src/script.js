@@ -47,47 +47,77 @@ function arrangeGame() {
 	let selectedCells = [];
 	let selectedWord = "";
 
-	function handleMouseMove() {
-		// Add cell to selectedCells array if not already in array
-		if (!selectedCells.includes(this)) {
-			selectedCells.push(this);
+	function handleMouseMove(event) {
+		event.preventDefault();
+		let touch;
+		if (event.type === "mousemove") {
+			touch = event;
+		} else {
+			touch = event.touches[0] || event.changedTouches[0];
 		}
-		// Update selected word
-		selectedWord = selectedCells.map((cell) => cell.textContent).join("");
-		// Add selected class to cell
-		this.classList.add("selected");
-		// Highlight cells that belong to selected word
+		const cell = document.elementFromPoint(touch.clientX, touch.clientY);
+		if (cell && cell.classList.contains("singleWord")) {
+			if (!selectedCells.includes(cell)) {
+				selectedCells.push(cell);
+			}
+			selectedWord = selectedCells
+				.map((cell) => cell.textContent)
+				.join("");
+			cell.classList.add("selected");
+			// Highlight cells that belong to selected word
+		}
 	}
 
 	puzzleCells.forEach((cell) => {
 		cell.addEventListener("mousedown", () => {
-			// Add mousemove event listener
 			puzzleCells.forEach((cell) => {
 				cell.addEventListener("mousemove", handleMouseMove);
 			});
-			// Update selected cells
 			selectedCells.push(cell);
-			// Update selected word
 			selectedWord = selectedCells
 				.map((cell) => cell.textContent)
 				.join("");
-			// Add selected class to cell
 			cell.classList.add("selected");
-			// Highlight cells that belong to selected word
 		});
+
+		cell.addEventListener("touchstart", (event) => {
+			event.preventDefault();
+			puzzleCells.forEach((cell) => {
+				cell.addEventListener("touchmove", handleMouseMove);
+			});
+			let touch = event.touches[0] || event.changedTouches[0];
+			const cell = document.elementFromPoint(
+				touch.clientX,
+				touch.clientY
+			);
+			if (cell && cell.classList.contains("singleWord")) {
+				selectedCells.push(cell);
+				selectedWord = selectedCells
+					.map((cell) => cell.textContent)
+					.join("");
+				cell.classList.add("selected");
+			}
+		});
+
 		cell.addEventListener("mouseup", () => {
-			// Remove mousemove event listener
 			puzzleCells.forEach((cell) => {
 				cell.removeEventListener("mousemove", handleMouseMove);
+				cell.removeEventListener("touchmove", handleMouseMove);
 			});
-			// Log selected word to console
 			console.log(selectedWord);
-
-			// Call crossOff function
 			crossOff(selectedWord);
 			found(selectedWord);
+			selectedCells = [];
+			selectedWord = "";
+		});
 
-			// Clear selected cells and word
+		cell.addEventListener("touchend", () => {
+			puzzleCells.forEach((cell) => {
+				cell.removeEventListener("touchmove", handleMouseMove);
+			});
+			console.log(selectedWord);
+			crossOff(selectedWord);
+			found(selectedWord);
 			selectedCells = [];
 			selectedWord = "";
 		});
