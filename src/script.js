@@ -482,3 +482,39 @@ function getAffirmation(selectedWord) {
 		categoryHeading.textContent = "";
 	}
 }
+
+function initParticles() {
+	hearts();
+}
+
+function hearts() {
+	document
+		.querySelectorAll(".particletext.hearts")
+		.forEach(function (element) {
+			var heartCount = (element.clientWidth / 50) * 5;
+
+			for (var i = 0; i <= heartCount; i++) {
+				var size = Math.floor(Math.random() * 6 + 6);
+				var newParticle = document.createElement("span");
+				newParticle.className = "particle";
+
+				// Randomize top position between 20% and 80%
+				newParticle.style.top =
+					Math.floor(Math.random() * 60 + 20) + "%";
+
+				// Randomize left position between 0% and 100%
+				newParticle.style.left = Math.floor(Math.random() * 95) + "%";
+
+				newParticle.style.width = size + "px";
+				newParticle.style.height = size + "px";
+
+				// Randomize animation delay between 0 and 3 seconds
+				newParticle.style.animationDelay =
+					Math.floor(Math.random() * 30) / 10 + "s";
+
+				element.appendChild(newParticle);
+			}
+		});
+}
+
+initParticles();
